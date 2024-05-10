@@ -7,10 +7,12 @@ class TestSearchLocators():
     locs = {}
     with open("locators.yaml") as f:
         locators = yaml.safe_load(f)
-    for locator in locators["xpath"].keys():
-        locs[locator] = (By.XPATH, locators["xpath"][locator])
-    for locator in locators["css"].keys():
-        locs[locator] = (By.CSS_SELECTOR, locators["css"][locator])
+    for locator in locators:
+        locs[locator] = (By.XPATH, locator)
+            
+            
+    # for locator in locators["css"].keys():
+    #     locs[locator] = (By.CSS_SELECTOR, locators["css"][locator])
     
 class OperationsHelper(BasePage):
     def enter_text_into_field(self, locator, text, description=None):
@@ -54,7 +56,7 @@ class OperationsHelper(BasePage):
             element_name = description
         else:
             element_name = locator
-        field = self.find_element(locator, time=10)
+        field = self.find_element(By.XPATH, locator, time=10)
         if not field:
             return None
         try:
@@ -113,6 +115,18 @@ class OperationsHelper(BasePage):
 
     # GET TEXT
 
+
+    # def get_blog_header(self):
+    def get_homepage_text(self):
+        blog_header = self.find_element(TestSearchLocators.locs["HOMEPAGE_TXT"], timer=3)
+        text = blog_header.text
+        # logging.info(f'Got text: {text} in blog header: {TestSearchLocators.LOCATOR_BLOG_HEADER[1]}')
+        return text
+
+
+        # return self.find_element(By.XPATH, "/html/body/section/div[2]/div/h1").text
+        return self.find_element(By.CSS_SELECTOR, "h1").text
+    
     def get_title_text(self):
         return self.get_text_from_element(TestSearchLocators.locs["LOCATOR_TITLE_TEXT"], description="title")
 

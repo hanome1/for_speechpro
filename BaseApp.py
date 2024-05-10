@@ -6,7 +6,7 @@ import logging
 class BasePage:
     def __init__(self, driver) -> None:
         self.driver = driver
-        self.base_url = "https://test-stand.gb.ru/"
+        self.base_url = "http://localhost:5000/"
 
     def find_element(self, locator, time=30):
         try:
