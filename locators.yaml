@@ -1,17 +1,20 @@
-HOMEPAGE_TXT: /html/body/section/div[2]/div/h1
 HOME_BTN: //*[@id="navbarMenuHeroA"]/div/a[1]
 LOGIN_BTN: //*[@id="navbarMenuHeroA"]/div/a[2]
-SIGN_UP_BTN: //*[@id="navbarMenuHeroA"]/div/a[3]
-# SIGN_UP_EMAIL_FIELD: /html/body/section/div[2]/div/div/div/form/div[1]/div/input
-SIGN_UP_EMAIL_FIELD: 
+SIGNUP_BTN: //*[@id="navbarMenuHeroA"]/div/a[3]
+
+PROFILE_BTN: LOGIN_BTN
+LOGOUT_BTN: SIGNUP_BTN
+
+HOMEPAGE_TXT: /html/body/section/div[2]/div/h1
+LOGIN_PAGE_TXT: /html/body/section/div[2]/div/div/h3
+
+SIGN_UP_EMAIL_FIELD: /html/body/section/div[2]/div/div/div/form/div[1]/div/input
 SIGN_UP_NAME_FIELD: /html/body/section/div[2]/div/div/div/form/div[2]/div/input
 SIGN_UP_PAS_FIELD: /html/body/section/div[2]/div/div/div/form/div[3]/div/input
 SIGN_UP_CONFIRM_BTN: /html/body/section/div[2]/div/div/div/form/button
 LOGIN_EMAIL_FIELD: /html/body/section/div[2]/div/div/div/form/div[1]/div/input
 LOGIN_PAS_FIELD: /html/body/section/div[2]/div/div/div/form/div[2]/div/input
 REMEMBER_CHKBX: /html/body/section/div[2]/div/div/div/form/div[3]/label
-PROFILE_BTN: LOGIN_BTN
-
 EMAIL: test
 NAME: test
 PAS: test

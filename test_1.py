@@ -1,6 +1,7 @@
 import yaml
 from pages.BasePage import BasePage
 from pages.home_page import HomePage
+from pages.login_page import LoginPage
 import time
 import logging
 import requests
@@ -8,16 +9,30 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-with open("locators.yaml") as f:
-    loc = yaml.safe_load(f)
+# with open("locators.yaml") as f:
+#     loc = yaml.safe_load(f)
 
 def test_step1(browser):
     logging.info('Test1 starting')
-    test_page = HomePage(browser)
-    test_page.go_to_site()
-    logging.info(f'result: {test_page.get_homepage_text()}')
+    test_page = BasePage(browser)
+
+    result = HomePage(browser).get_homepage_text()
     
-    assert test_page.get_homepage_text() == 'Test home page', 'Text on home page does not match'
+    logging.info(f'result: {result}')
+    assert result == 'Test home page', 'Text on home page does not match'
+
+
+def test_step2(browser):
+    logging.info('Test2 starting')
+    test_page = BasePage(browser)
+
+    time.sleep(1)
+    BasePage(browser).click_login_btn()
+    time.sleep(1)
+    result = LoginPage(browser).get_login_page_text()
+
+    logging.info(f'result: {result}')
+    assert result == 'Login', 'Text on home page does not match'
 
     
 

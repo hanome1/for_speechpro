@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 # from webdriver_manager.firefox import GeckoDriverManager
-import requests
+# import requests
 
 # with open("./config.yaml") as f:
 #     testdata = yaml.safe_load(f)
@@ -19,9 +19,11 @@ def browser():
     #     options = webdriver.FirefoxOptions()
     #     driver = webdriver.Firefox(service=service, options=options)
     # else:
-    serv = Service(executable_path=ChromeDriverManager().install())
-    ops = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=serv, options=ops)
+    service = Service(executable_path=ChromeDriverManager().install())
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.set_window_size(1920, 1080)
+    driver.get('http://localhost:5000/')
     yield driver
     driver.quit()
 

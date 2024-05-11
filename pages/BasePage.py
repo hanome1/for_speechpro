@@ -14,7 +14,7 @@ class TestSearchLocators():
 class BasePage:
     def __init__(self, driver) -> None:
         self.driver = driver
-        self.base_url = "http://localhost:5000/"
+        # self.base_url = "http://localhost:5000/"
 
     def find_element(self, locator, time=30):
         try:
@@ -33,13 +33,13 @@ class BasePage:
             logging.error(f'Property {property} not found in element with locator {locator}')
             return None
 
-    def go_to_site(self):
-        try:
-            start_browsing = self.driver.get(self.base_url)
-        except:
-            logging.exception("Exception while open site")
-            start_browsing = None
-        return start_browsing
+    # def go_to_site(self):
+    #     try:
+    #         start_browsing = self.driver.get(self.base_url)
+    #     except:
+    #         logging.exception("Exception while open site")
+    #         start_browsing = None
+    #     return start_browsing
     
     def alert(self):
         try:
@@ -85,7 +85,6 @@ class BasePage:
         return True
 
     def get_text(self, locator, description=None):
-
         if description:
             element_name = description
         else:
@@ -101,5 +100,24 @@ class BasePage:
             return None
         logging.debug(f'We find text {text} in field {element_name}')
         text = field.text
-
         return text
+    
+
+    def click_home_btn(self):
+        self.click(TestSearchLocators.locs["HOME_BTN"])
+
+        
+    def click_login_btn(self):
+        self.click(TestSearchLocators.locs["LOGIN_BTN"])
+
+
+    def click_signup_btn(self):
+        self.click(TestSearchLocators.locs["SIGNUP_BTN"])
+
+
+    def click_profile_btn(self):
+        self.click(TestSearchLocators.locs["PROFILE_BTN"])
+
+
+    def click_logout_btn(self):
+        self.click(TestSearchLocators.locs["LOGOUT_BTN"])
