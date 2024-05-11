@@ -1,5 +1,6 @@
 import yaml
-from testpage import OperationsHelper
+from pages.BasePage import BasePage
+from pages.home_page import HomePage
 import time
 import logging
 import requests
@@ -12,11 +13,11 @@ with open("locators.yaml") as f:
 
 def test_step1(browser):
     logging.info('Test1 starting')
-    test_page = OperationsHelper(browser)
+    test_page = HomePage(browser)
     test_page.go_to_site()
     logging.info(f'result: {test_page.get_homepage_text()}')
     
-    assert test_page.get_homepage_text() == 'Test home page'
+    assert test_page.get_homepage_text() == 'Test home page', 'Text on home page does not match'
 
     
 
