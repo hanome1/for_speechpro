@@ -7,8 +7,8 @@ from components.header import Header
 import logging
 
 
-def test_main_page():
+def test_main_page(browser: Driver):
     logging.info('test started')
-    text_we_get = MainPage.verify_page()
+    text_we_get = MainPage.verify_page(browser)
     logging.info(text_we_get)
     assert text_we_get, 'PIZDA'
