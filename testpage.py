@@ -56,7 +56,8 @@ class OperationsHelper(BasePage):
             element_name = description
         else:
             element_name = locator
-        field = self.find_element(By.XPATH, locator, time=10)
+        logging.info(locator)
+        field = self.find_element((By.XPATH, locator), time=10)
         if not field:
             return None
         try:
@@ -118,14 +119,7 @@ class OperationsHelper(BasePage):
 
     # def get_blog_header(self):
     def get_homepage_text(self):
-        blog_header = self.find_element(TestSearchLocators.locs["HOMEPAGE_TXT"], timer=3)
-        text = blog_header.text
-        # logging.info(f'Got text: {text} in blog header: {TestSearchLocators.LOCATOR_BLOG_HEADER[1]}')
-        return text
-
-
-        # return self.find_element(By.XPATH, "/html/body/section/div[2]/div/h1").text
-        return self.find_element(By.CSS_SELECTOR, "h1").text
+        return self.get_text_from_element('/html/body/section/div[2]/div/h1', description="fuck")
     
     def get_title_text(self):
         return self.get_text_from_element(TestSearchLocators.locs["LOCATOR_TITLE_TEXT"], description="title")

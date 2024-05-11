@@ -14,9 +14,9 @@ def test_step1(browser):
     logging.info('Test1 starting')
     test_page = OperationsHelper(browser)
     test_page.go_to_site()
-    logging.info(f'result: {test_page.get_homepage_text}')
+    logging.info(f'result: {test_page.get_homepage_text()}')
     
-    assert test_page.find_element("/html/body/section/div[2]/div/h1").text == 'Test home page'
+    assert test_page.get_homepage_text() == 'Test home page'
 
     
 

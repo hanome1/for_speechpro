@@ -1,7 +1,4 @@
-# HOMEPAGE_TXT: h1
 HOMEPAGE_TXT: /html/body/section/div[2]/div/h1
-
-
 HOME_BTN: //*[@id="navbarMenuHeroA"]/div/a[1]
 LOGIN_BTN: //*[@id="navbarMenuHeroA"]/div/a[2]
 SIGN_UP_BTN: //*[@id="navbarMenuHeroA"]/div/a[3]
