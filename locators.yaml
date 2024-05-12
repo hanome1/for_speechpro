@@ -8,13 +8,14 @@ LOGOUT_BTN: SIGNUP_BTN
 HOMEPAGE_TXT: /html/body/section/div[2]/div/h1
 LOGIN_PAGE_TXT: /html/body/section/div[2]/div/div/h3
 
-SIGN_UP_EMAIL_FIELD: /html/body/section/div[2]/div/div/div/form/div[1]/div/input
-SIGN_UP_NAME_FIELD: /html/body/section/div[2]/div/div/div/form/div[2]/div/input
-SIGN_UP_PAS_FIELD: /html/body/section/div[2]/div/div/div/form/div[3]/div/input
-SIGN_UP_CONFIRM_BTN: /html/body/section/div[2]/div/div/div/form/button
+SIGNUP_EMAIL_FIELD: /html/body/section/div[2]/div/div/div/form/div[1]/div/input
+SIGNUP_NAME_FIELD: /html/body/section/div[2]/div/div/div/form/div[2]/div/input
+SIGNUP_PAS_FIELD: /html/body/section/div[2]/div/div/div/form/div[3]/div/input
+SIGNUP_CONFIRM_BTN: /html/body/section/div[2]/div/div/div/form/button
+
 LOGIN_EMAIL_FIELD: /html/body/section/div[2]/div/div/div/form/div[1]/div/input
 LOGIN_PAS_FIELD: /html/body/section/div[2]/div/div/div/form/div[2]/div/input
 REMEMBER_CHKBX: /html/body/section/div[2]/div/div/div/form/div[3]/label
-EMAIL: test
-NAME: test
-PAS: test
+LOGIN_CONFIRM_BTN: /html/body/section/div[2]/div/div/div/form/button
+
+PROFILE_PAGE_TXT: /html/body/section/div[2]/div/h1

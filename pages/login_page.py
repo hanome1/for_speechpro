@@ -1,28 +1,19 @@
-from pages.BasePage import BasePage, TestSearchLocators
+from pages.BasePage import BasePage, Locators
 
 class LoginPage(BasePage):
     
-    # TEXT INPUT
 
-    def enter_login(self, word):
-        self.input_text(TestSearchLocators.locs["LOCATOR_LOGIN_FIELD"], word, description="Login form")
-
-
-    # CLICK
-
-    def click_login_btn(self):
-        self.click(TestSearchLocators.locs["LOCATOR_LOGIN_BTN"], description="login")
-
-
-    # GET TEXT
-
-
-    def get_login_page_text(self):
-        return self.get_text(TestSearchLocators.locs["LOGIN_PAGE_TXT"], description="login page text")
+    def get_title(self):
+        return self.get_text(Locators.locs["LOGIN_PAGE_TXT"], description="login page text")
     
    
-    # def get_alert_text(self):
-    #     logging.info("Get alert text")
-    #     text = self.alert()
-    #     logging.info(text)
-    #     return text
+    def input_email(self, word):
+        self.input_text(Locators.locs["LOGIN_EMAIL_FIELD"], word, description="email form")
+
+
+    def input_pas(self, word):
+        self.input_text(Locators.locs["LOGIN_PAS_FIELD"], word, description="passwd form")
+
+
+    def click_login_btn(self):
+        self.click(Locators.locs["LOGIN_CONFIRM_BTN"], description="login confirm btn")

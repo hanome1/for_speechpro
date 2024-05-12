@@ -4,14 +4,19 @@ from selenium.webdriver.common.by import By
 import yaml
 import logging
 
-class TestSearchLocators():
+class Data_():
+    email = 'test5@test'
+    name = 'test'
+    pas = 'passwd'
+    
+class Locators():
     locs = {}
     with open("locators.yaml") as f:
         locators = yaml.safe_load(f)
     for locator in locators:
         locs[locator] = (By.XPATH, locators[locator])
 
-class BasePage:
+class BasePage():
     def __init__(self, driver) -> None:
         self.driver = driver
         # self.base_url = "http://localhost:5000/"
@@ -104,20 +109,23 @@ class BasePage:
     
 
     def click_home_btn(self):
-        self.click(TestSearchLocators.locs["HOME_BTN"])
+        self.click(Locators.locs["HOME_BTN"])
 
         
     def click_login_btn(self):
-        self.click(TestSearchLocators.locs["LOGIN_BTN"])
+        self.click(Locators.locs["LOGIN_BTN"])
 
 
     def click_signup_btn(self):
-        self.click(TestSearchLocators.locs["SIGNUP_BTN"])
+        self.click(Locators.locs["SIGNUP_BTN"])
 
 
     def click_profile_btn(self):
-        self.click(TestSearchLocators.locs["PROFILE_BTN"])
+        self.click(Locators.locs["PROFILE_BTN"])
 
 
     def click_logout_btn(self):
-        self.click(TestSearchLocators.locs["LOGOUT_BTN"])
+        self.click(Locators.locs["LOGOUT_BTN"])
+
+    def check_requred(self, locator):
+        return self.find_element(locator).get_attribute('required') == True
