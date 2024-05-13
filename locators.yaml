@@ -2,20 +2,21 @@ HOME_BTN: //*[@id="navbarMenuHeroA"]/div/a[1]
 LOGIN_BTN: //*[@id="navbarMenuHeroA"]/div/a[2]
 SIGNUP_BTN: //*[@id="navbarMenuHeroA"]/div/a[3]
 
-PROFILE_BTN: LOGIN_BTN
-LOGOUT_BTN: SIGNUP_BTN
+PROFILE_BTN: //*[@id="navbarMenuHeroA"]/div/a[2]
+LOGOUT_BTN: //*[@id="navbarMenuHeroA"]/div/a[3]
 
 HOMEPAGE_TXT: /html/body/section/div[2]/div/h1
 LOGIN_PAGE_TXT: /html/body/section/div[2]/div/div/h3
+SIGNUP_PAGE_TXT: /html/body/section/div[2]/div/div/h3
+PROFILE_PAGE_TXT: /html/body/section/div[2]/div/h1
 
 SIGNUP_EMAIL_FIELD: /html/body/section/div[2]/div/div/div/form/div[1]/div/input
 SIGNUP_NAME_FIELD: /html/body/section/div[2]/div/div/div/form/div[2]/div/input
 SIGNUP_PAS_FIELD: /html/body/section/div[2]/div/div/div/form/div[3]/div/input
 SIGNUP_CONFIRM_BTN: /html/body/section/div[2]/div/div/div/form/button
+SIGNUP_ALERT_TXT: /html/body/section/div[2]/div/div/div/div
 
 LOGIN_EMAIL_FIELD: /html/body/section/div[2]/div/div/div/form/div[1]/div/input
 LOGIN_PAS_FIELD: /html/body/section/div[2]/div/div/div/form/div[2]/div/input
 REMEMBER_CHKBX: /html/body/section/div[2]/div/div/div/form/div[3]/label
 LOGIN_CONFIRM_BTN: /html/body/section/div[2]/div/div/div/form/button
-
-PROFILE_PAGE_TXT: /html/body/section/div[2]/div/h1

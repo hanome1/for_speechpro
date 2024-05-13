@@ -4,11 +4,22 @@ from selenium.webdriver.common.by import By
 import yaml
 import logging
 
+
+# здесь должен был быть класс-генератор тестового пользователя
 class Data_():
-    email = 'test5@test'
+    email = 'test6@test'
+    email_clear = ''
+    email_one_symbol = '1'
+    email_only_dog = '@'
+    email_dog_symbol = '@1'
+
     name = 'test'
+    name_clear = ''
     pas = 'passwd'
-    
+    pas_clear = ''
+
+
+# заморочился с файлом, содержащим xpath и css локаторами, но вторые не использовал
 class Locators():
     locs = {}
     with open("locators.yaml") as f:
@@ -16,17 +27,20 @@ class Locators():
     for locator in locators:
         locs[locator] = (By.XPATH, locators[locator])
 
+
+# основные функции
 class BasePage():
     def __init__(self, driver) -> None:
         self.driver = driver
         # self.base_url = "http://localhost:5000/"
 
     def find_element(self, locator, time=30):
+        # logging.info(f'{locator=}')
         try:
             element = WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
                                                              message=f"Can't find element by locator {locator} ")
         except:
-            logging.exception("Find element exception")
+            logging.exception("ELEMENT NOT FOUND")
             element = None
         return element
 
@@ -36,22 +50,6 @@ class BasePage():
             return element.value_of_css_property(property)
         else:
             logging.error(f'Property {property} not found in element with locator {locator}')
-            return None
-
-    # def go_to_site(self):
-    #     try:
-    #         start_browsing = self.driver.get(self.base_url)
-    #     except:
-    #         logging.exception("Exception while open site")
-    #         start_browsing = None
-    #     return start_browsing
-    
-    def alert(self):
-        try:
-            alert_obj = self.driver.switch_to.alert
-            return alert_obj.text
-        except:
-            logging.exception("Exception with alert")
             return None
 
     def input_text(self, locator, text, description=None):
@@ -72,38 +70,25 @@ class BasePage():
             return False
         return True
 
-    def click(self, locator, description=None):
-        if description:
-            element_name = description
-        else:
-            element_name = locator
-
+    def click(self, locator):
         button = self.find_element(locator)
         if not button:
-            return False
+            pass
         try:
             button.click()
         except:
             logging.exception(f'Exception with click')
-            return False
-        logging.debug(f'Clicked {element_name} button')
-        return True
 
-    def get_text(self, locator, description=None):
-        if description:
-            element_name = description
-        else:
-            element_name = locator
-        logging.info(locator)
-        field = self.find_element(locator, time=10)
+    def get_text(self, locator):
+        # logging.info(locator)
+        field = self.find_element(locator, time=1)
         if not field:
             return None
         try:
             text = field.text
         except:
-            logging.exception(f'Exception while get test from {element_name}')
             return None
-        logging.debug(f'We find text {text} in field {element_name}')
+        # logging.debug(f'We find text {text} in field {element_name}')
         text = field.text
         return text
     

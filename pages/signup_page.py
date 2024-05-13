@@ -1,6 +1,7 @@
 from pages.BasePage import BasePage, Locators
     
 class SignupPage(BasePage):
+    
 
     def get_title(self):
         return self.get_text(Locators.locs["SIGNUP_PAGE_TXT"], description="signup page text")
@@ -38,3 +39,7 @@ class SignupPage(BasePage):
 
     def click_signup_confirm_btn(self):
         self.click(Locators.locs["SIGNUP_CONFIRM_BTN"], description="signup confirm btn")
+    
+
+    def get_alert_text(self):
+        return self.get_text(Locators.locs["SIGNUP_ALERT_TXT"], description="signup alert text")
