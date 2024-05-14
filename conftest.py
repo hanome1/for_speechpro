@@ -9,7 +9,8 @@ def browser():
     service = Service(executable_path=ChromeDriverManager().install())
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(service=service, options=options)
-    driver.set_window_size(1920, 1080)
+    # driver.set_window_size(1920, 1080)
+    driver.maximize_window()
     driver.get('http://localhost:5000/')
     yield driver
     driver.quit()

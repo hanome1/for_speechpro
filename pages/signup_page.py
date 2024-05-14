@@ -7,7 +7,7 @@ class SignupPage(BasePage):
         return self.get_text(Locators.locs["SIGNUP_PAGE_TXT"], description="signup page text")
     
 
-    def check_email_field_reqierd(self):
+    def check_email_field_required(self):
         self.check_requred(Locators.locs["SIGNUP_EMAIL_FIELD"])
 
 

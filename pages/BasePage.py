@@ -6,8 +6,8 @@ import logging
 
 
 # здесь должен был быть класс-генератор тестового пользователя
-class Data_():
-    email = 'test6@test'
+class User():
+    email = 'test111@test'
     email_clear = ''
     email_one_symbol = '1'
     email_only_dog = '@'
@@ -15,11 +15,12 @@ class Data_():
 
     name = 'test'
     name_clear = ''
+
     pas = 'passwd'
     pas_clear = ''
 
 
-# заморочился с файлом, содержащим xpath и css локаторами, но вторые не использовал
+# заморочился с файлом, содержащим разные локаторы, но использовал в итоге только xpath
 class Locators():
     locs = {}
     with open("locators.yaml") as f:
@@ -28,14 +29,14 @@ class Locators():
         locs[locator] = (By.XPATH, locators[locator])
 
 
-# основные функции
+# основные функции сайта и хедера
 class BasePage():
     def __init__(self, driver) -> None:
         self.driver = driver
-        # self.base_url = "http://localhost:5000/"
+
 
     def find_element(self, locator, time=30):
-        # logging.info(f'{locator=}')
+        # logging.debug(f'{locator=}')
         try:
             element = WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
                                                              message=f"Can't find element by locator {locator} ")
@@ -44,6 +45,7 @@ class BasePage():
             element = None
         return element
 
+
     def get_element_property(self, locator, property):
         element = self.find_element(locator)
         if element:
@@ -51,6 +53,7 @@ class BasePage():
         else:
             logging.error(f'Property {property} not found in element with locator {locator}')
             return None
+
 
     def input_text(self, locator, text, description=None):
         if description:
@@ -70,16 +73,28 @@ class BasePage():
             return False
         return True
 
-    def click(self, locator):
+
+    def click(self, locator, description=None):
+        if description:
+            element_name = description
+        else:
+            element_name = locator
         button = self.find_element(locator)
         if not button:
-            pass
+            return False
         try:
             button.click()
         except:
             logging.exception(f'Exception with click')
+        logging.debug(f'Clicked {element_name} button') 
+        return True
 
-    def get_text(self, locator):
+
+    def get_text(self, locator, description=None):
+        if description:
+            element_name = description
+        else:
+            element_name = locator
         # logging.info(locator)
         field = self.find_element(locator, time=1)
         if not field:
@@ -87,11 +102,12 @@ class BasePage():
         try:
             text = field.text
         except:
+            logging.exception(f'Exception while get test from {element_name}')
             return None
-        # logging.debug(f'We find text {text} in field {element_name}')
+        logging.debug(f'found text {text} in field {element_name}')
         text = field.text
         return text
-    
+        
 
     def click_home_btn(self):
         self.click(Locators.locs["HOME_BTN"])
@@ -112,5 +128,10 @@ class BasePage():
     def click_logout_btn(self):
         self.click(Locators.locs["LOGOUT_BTN"])
 
+
     def check_requred(self, locator):
         return self.find_element(locator).get_attribute('required') == True
+    
+
+    def is_login(self):
+        return self.get_text(Locators.locs["SIGNUP_BTN"]) == 'Logout'
