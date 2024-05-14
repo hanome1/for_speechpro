@@ -1,15 +1,6 @@
-from driver import Driver
-from selenium.webdriver.common.by import By
-from components.header import Header
+from pages.BasePage import BasePage, Locators
+    
+class ProfilePage(BasePage):
 
-
-class ProfilePage:
-    Header = Header
-
-    main_txt_xpath = '/html/body/section/div[2]/div/h1'
-
-
-    def verify_page():
-        ProfilePage.Header.verify_component()
-        Driver().find_element(By.XPATH(ProfilePage.main_txt_xpath))
-
+    def get_title(self):
+        return self.get_text(Locators.locs["PROFILE_PAGE_TXT"], description="profile page text")
