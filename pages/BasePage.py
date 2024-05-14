@@ -7,7 +7,7 @@ import logging
 
 # здесь должен был быть класс-генератор тестового пользователя
 class User():
-    email = 'test111@test'
+    email = 'test222@test'
     email_clear = ''
     email_one_symbol = '1'
     email_only_dog = '@'
